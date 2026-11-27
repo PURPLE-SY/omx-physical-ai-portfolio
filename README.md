@@ -64,6 +64,7 @@
 | [wrist-fix-analysis.md](docs/wrist-fix-analysis.md) | 손목 오프셋 원본 vs 보정본 |
 | [act-training-history.md](docs/act-training-history.md) | 모델·데이터·loss |
 | [physical-validation-F01-S03.md](docs/physical-validation-F01-S03.md) · [F02-S01](docs/physical-validation-F02-S01.md) · [F02-S05](docs/physical-validation-F02-S05.md) | 실물 검증 3건 |
+| [success-failure-analysis.md](docs/success-failure-analysis.md) | 실물 성공·실패 원인 (확정/후보 구분) |
 | [hardware-debugging.md](docs/hardware-debugging.md) | 모터·통신·카메라 문제 이력 |
 | [engineering-contribution.md](docs/engineering-contribution.md) | 내가 수행한 역할 |
 | [interview-summary.md](docs/interview-summary.md) | 면접용 요약 |
