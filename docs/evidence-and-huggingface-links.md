@@ -7,6 +7,19 @@
   - 저장소별 공개 권한이 확인되면 승인된 링크만 다시 추가한다.
 - 비공개로 유지하는 자료: 신규 원본 10개, 손목 보정 합본, 학습 모델, 실물 검증 증빙(영상·로그·eval)
 
+## HF 저장소 수 (2026-11-27, 고유 repository ID 기준)
+| 구분 | 수 |
+|---|---|
+| HF 전체 | 111 (데이터셋 88, 모델 23) |
+| HF 현재 공개 | 74 (데이터셋 73, 모델 1) |
+| `dataset-inventory.csv` 행 | 95 (고유 저장소 84) |
+| CSV에서 현재 공개 행 | 83 (고유 저장소 72) |
+
+- **83행이 72개로 줄어드는 이유:** `Purple-SY/omx-left-arm` 한 저장소에 날짜별 하위 데이터셋 12개(2026-10-29_v8 ~ 2026-11-03_v25)가 들어 있어 12행으로 집계됨
+- **74개와 72개의 차이 2개:** 녹화 데이터셋이 아니라서 CSV에 넣지 않은 저장소
+  - 실험 보고서 데이터셋 `Purple-SY/act-evaluation-failure-20261110`
+  - 모델 `Purple-SY/omx-act-pick-place-1110-10k`
+
 ## 원본 데이터셋
 - 전체 목록: [dataset-inventory.csv](dataset-inventory.csv) (`hf_repo`, `hf_visibility_now` 열)
 - 날짜별 표: [data-collection-timeline.md](data-collection-timeline.md)
