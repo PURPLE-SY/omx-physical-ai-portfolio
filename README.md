@@ -8,7 +8,7 @@
 - **녹화:** 텔레옵 원본 **85개 폴더 / 1,085 에피소드 / 706,919 프레임** (2026-10-29 ~ 11-25, 로컬·HF 중복 제외)
 - **데이터 보존:** Hugging Face Purple-SY에 원본 정리
   - 기존 78쌍 SHA-256 전부 일치
-  - 누락 원본 10개 비공개 추가 업로드, 102/102 일치
+  - 누락 10개 비공개 추가 업로드(텔레옵 원본 39 ep + 진단 녹화 1 ep), 102/102 일치
 - **데이터 오류 해결:**
   - 11/14 시간축 압축(표기 30 Hz ↔ 실제 13~15 Hz) 분석
   - Left F02 손목 action 오프셋(51.4~55.3) 보정 → \|a−s\| 중앙값 145 → 0.3
@@ -45,7 +45,7 @@
 | 2026-11-25 | 1 | 1 | 960 | 1085 | Right |
 | **합계** | **85** | **1085** | **706,919** | | |
 
-- 세부 내역(팔·층·위치·폴더·카메라·HF 링크): [docs/data-collection-timeline.md](docs/data-collection-timeline.md), [docs/dataset-inventory.csv](docs/dataset-inventory.csv)
+- 세부 내역(팔·층·위치·폴더·카메라·HF 저장소 이름): [docs/data-collection-timeline.md](docs/data-collection-timeline.md), [docs/dataset-inventory.csv](docs/dataset-inventory.csv)
 - 10/17~10/28 녹화 원본은 찾지 못함(미확인). 11/26~27은 실물 검증만 있고 신규 녹화는 없음.
 
 ## 대표 오류 분석
@@ -62,17 +62,16 @@
 | [dataset-inventory.csv](docs/dataset-inventory.csv) | 데이터셋 전체 목록(95행: 원본 85 + 합본·평가·진단 10) |
 | [data-quality-analysis.md](docs/data-quality-analysis.md) | 시간축, 0.5 s 정지, dry-run 실패, 재검증, 파생 데이터 |
 | [wrist-fix-analysis.md](docs/wrist-fix-analysis.md) | 손목 오프셋 원본 vs 보정본 |
-| [act-training-history.md](docs/act-training-history.md) | 모델·데이터·loss·HF 링크 |
+| [act-training-history.md](docs/act-training-history.md) | 모델·데이터·loss |
 | [physical-validation-F01-S03.md](docs/physical-validation-F01-S03.md) · [F02-S01](docs/physical-validation-F02-S01.md) · [F02-S05](docs/physical-validation-F02-S05.md) | 실물 검증 3건 |
 | [hardware-debugging.md](docs/hardware-debugging.md) | 모터·통신·카메라 문제 이력 |
 | [engineering-contribution.md](docs/engineering-contribution.md) | 내가 수행한 역할 |
 | [interview-summary.md](docs/interview-summary.md) | 면접용 요약 |
-| [evidence-and-huggingface-links.md](docs/evidence-and-huggingface-links.md) | HF 링크, SHA-256 결과, 접근 권한 |
+| [evidence-and-huggingface-links.md](docs/evidence-and-huggingface-links.md) | HF 저장소, SHA-256 결과, 공개 범위 |
 | [scripts/](scripts/README.md) | 실행 흔적이 확인된 분석·점검 스크립트(출처 명시) |
 
-## 공개 범위와 증빙 접근
+## 공개 범위와 증빙
 - 이 저장소는 **공개 저장소**다. 공개 전에 팀 내부 정보, 다른 팀원의 코드, 인증정보, 개인정보, 장치 식별자를 검사했다.
-- **링크로 바로 열 수 있는 증빙:** 공개 HF 데이터셋(`docs/dataset-inventory.csv`에서 `hf_access=public`인 83개 행)
-- **비공개로 유지하는 자료:** 신규 원본 녹화, 학습 모델, 실물 검증 증빙(영상·로그·eval)
-  - 공개 정책에 따라 HF 비공개 저장소에 두고, 문서에는 이름과 "HF 비공개"만 표시했다
-- 이 문서의 통계는 위 원본에서 다시 집계한 값이다. 집계와 검증에 쓴 스크립트는 `scripts/`에 있다.
+- 원본 녹화·모델·실물 검증 자료는 Hugging Face(Purple-SY)에 있다.
+  - 팀 공개 권한이 확인되기 전까지 **직접 링크는 게시하지 않고**, 저장소 이름·현재 공개 상태·통계·SHA-256 검증 결과만 공개한다.
+- 이 문서의 통계는 원본 `meta/info.json`, 실행 로그, 탑뷰 영상에서 다시 집계한 값이다. 집계와 검증에 쓴 스크립트는 `scripts/`에 있다.

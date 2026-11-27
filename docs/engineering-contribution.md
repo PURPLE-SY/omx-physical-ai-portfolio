@@ -8,7 +8,7 @@
   - 근거: [data-collection-timeline.md](data-collection-timeline.md)
 - Hugging Face(Purple-SY)에 원본을 정리했다
   - 기존 78쌍은 로컬과 SHA-256 전부 일치함을 확인
-  - 누락 원본 10개를 비공개로 추가하고 102/102 일치를 확인
+  - 누락 10개(텔레옵 원본 39 ep + 진단 녹화 1 ep)를 비공개로 추가하고 102/102 일치를 확인
 
 ## 데이터 품질 관리
 - 11/14 시간축 압축(30 Hz 표기 ↔ 실제 13~15 Hz)을 분석했다. 원본은 보존
