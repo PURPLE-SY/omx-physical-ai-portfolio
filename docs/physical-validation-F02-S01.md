@@ -1,5 +1,7 @@
 # 실물 검증 B — B팔(왼팔) F02(2층) S01: 기존 데이터 기반 실물 리플레이
 
+작성: **PURPLE-SY (김승용)**
+
 > **ACT 정책 추론 결과가 아니다.** 녹화된 action을 그대로 다시 보낸 개방 루프 재생이다. 카메라 입력과 정책 추론은 쓰지 않았다.
 
 | 항목 | 내용 |
@@ -8,7 +10,7 @@
 | 데이터 | `pick_place_Left_11_21_F02_S01_wristfix` ep7 (635 frames, 30 fps, 원래 21.2 s) |
 | 재생 | 0.25배속, **1회**, 85.5 s (`replay.jsonl`의 `completed` 이벤트, 마지막 frame 634) |
 | 결과 | 컨베이어 블록 집기 → 이동 → 트레이 왼쪽 위 칸 배치 **성공** (top·bottom·wrist 영상 확인) |
-| 실행 전 점검 | `check_before.json`: 토크 0, 오류 0, XL430 11.6~11.7 V, XL330 6.0~6.1 V, 게인 P640/D3600(shoulder) 등 고정값 |
+| 실행 전 점검 | `check_before.json`: 토크 0, 오류 0, XL430 11.6–11.7 V, XL330 6.0–6.1 V, 게인 P640/D3600(shoulder) 등 고정값 |
 | 안전 기준 | 시작 자세 2°(shoulder_lift만 승인받아 3°), 프레임당 5% 범위, 관절 제한, 추종 오차 = 녹화 최대 + 103 |
 | 감시 | 정지 0회, 종료 후 토크 0·오류 0 |
 | 증빙 | `Purple-SY/omx-b-arm-f02-s01-real-replay-20261125` (HF 비공개) (REPORT.md, SHA256SUMS, replay.jsonl, check_before.json, 카메라 3대 MP4, 추종 오차·전압 그래프) |

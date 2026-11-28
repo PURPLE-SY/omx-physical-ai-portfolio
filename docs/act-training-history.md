@@ -1,5 +1,7 @@
 # ACT 학습 이력
 
+작성: **PURPLE-SY (김승용)**
+
 학습은 별도 GPU PC(집 PC)에서 했다. 이 문서는 노트북에 남은 설정·감사 기록과 외장 HDD의 loss 기록을 근거로 한다. **학습 loss는 실물 성공률이 아니다.** 실물 결과는 physical-validation 문서에 따로 적었다.
 
 ## 1. 13,000-step 모델 7종 (2026-11-24 학습, HF 비공개)
@@ -29,9 +31,9 @@
 |---|---|---|---|
 | omx-act-1107-spot02_or-best-20261110 | pick_place_11_07_spot02_OR | 10000 steps, bs 4, lr 1e-5 | best 5500, eval loss 0.261, `robot_success_tested=false` |
 | omx-act-1109-01spot-best-20261110 | pick_place_11_09_01spot | – | best 3000, eval loss 0.3361 |
-| omx-act-1107-spot01/03~06, spot01_ye | 각 11_07 spot | 미확인 | 미확인 |
+| omx-act-1107-spot01/03–06, spot01_ye | 각 11_07 spot | 미확인 | 미확인 |
 | act_pick_place_{L,Left,R}_11_21_* (5종) | 11-21 합본 | 10000 steps, bs 4, lr 1e-5, chunk 100 | loss 값 미추출 |
-| omx-left-arm-act-demo-20261126 | pick_place_left_11_14_S02_F03 (ep 0~23 학습, 24~29 held-out) | 13000 steps | F03-002000 val 0.2757 (Best), F03-012000 val 0.2857, Final 013000 val 미확인 |
+| omx-left-arm-act-demo-20261126 | pick_place_left_11_14_S02_F03 (ep 0–23 학습, 24–29 held-out) | 13000 steps | F03-002000 val 0.2757 (Best), F03-012000 val 0.2857, Final 013000 val 미확인 |
 
 - `omx-act-pick-place-1110-10k`(공개 모델)의 학습 설정은 **미확인**
 
