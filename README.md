@@ -21,9 +21,9 @@ Robot Control · Imitation Learning · Real-world Validation
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white)
 
 
-<a href="assets/media/videos/01_B-F01-S03_ACT_success_20261126-2348.mp4"><img src="assets/media/thumbs/01_B-F01-S03_ACT_success_20261126-2348.jpg" width="32%" alt="ACT 자율 구동 성공 — B팔 1층 S03"></a>
-<a href="assets/media/videos/05_B-F02-S05_ACT_success_20261127-0036.mp4"><img src="assets/media/thumbs/05_B-F02-S05_ACT_success_20261127-0036.jpg" width="32%" alt="ACT 자율 구동 성공 — B팔 2층 S05"></a>
-<a href="assets/media/videos/09_B-F01-S03_REPLAY_success_20261128-0254.mp4"><img src="assets/media/thumbs/09_B-F01-S03_REPLAY_success_20261128-0254.jpg" width="32%" alt="녹화 리플레이 성공 — B팔 1층 S03"></a>
+<a href="https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=01"><img src="assets/media/thumbs/01_B-F01-S03_ACT_success_20261126-2348.jpg" width="32%" alt="ACT 자율 구동 성공 — B팔 1층 S03"></a>
+<a href="https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=05"><img src="assets/media/thumbs/05_B-F02-S05_ACT_success_20261127-0036.jpg" width="32%" alt="ACT 자율 구동 성공 — B팔 2층 S05"></a>
+<a href="https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=09"><img src="assets/media/thumbs/09_B-F01-S03_REPLAY_success_20261128-0254.jpg" width="32%" alt="녹화 리플레이 성공 — B팔 1층 S03"></a>
 
 <sub>▶ 썸네일을 누르면 영상이 재생됩니다 · 왼쪽부터 <b>ACT 자율 구동</b> 1층 S03 (11-26 23:48) · <b>ACT 자율 구동</b> 2층 S05 (11-27 00:36) · <b>녹화 리플레이(정책 아님)</b> 1층 S03 (11-28 02:54) · 전체 18개(ACT·리플레이·부분 성공·실패·텔레옵 시연) → <a href="docs/videos.md">영상 목록</a></sub>
 
@@ -75,11 +75,11 @@ flowchart LR
 
 | 검증 | 방식 | 모델 / 체크포인트 | 결과 | 영상 |
 |---|---|---|---|---|
-| [B팔 F02 S05](docs/physical-validation-F02-S05.md) | **ACT 자율** | F02 wristfix · Best 12000 | 7회 중 **깨끗한 성공 4**(00:25–00:27 연속 3회), 충돌 동반 2, 실패 1 | [02](assets/media/videos/02_B-F02-S05_ACT_success_20261127-0025_ep1.mp4) · [03](assets/media/videos/03_B-F02-S05_ACT_success_20261127-0026_ep2.mp4) · [04](assets/media/videos/04_B-F02-S05_ACT_success_20261127-0027_ep3.mp4) · [05](assets/media/videos/05_B-F02-S05_ACT_success_20261127-0036.mp4) |
-| [B팔 F01 S03](docs/physical-validation-F01-S03.md) | **ACT 자율** | F01 · Best 12000 | 15회 중 **깨끗한 성공 1**, 놓기만 성공 3, 실패 11 | [01](assets/media/videos/01_B-F01-S03_ACT_success_20261126-2348.mp4) |
-| [B팔 F02 S01](docs/physical-validation-F02-S01.md) | 리플레이 (정책 아님) | — | 1/1 성공 | [06](assets/media/videos/06_B-F02-S01_REPLAY_success_20261125.mp4) |
-| B팔 F03 S02 | 리플레이 (정책 아님) | — | 2회 모두 **부분 성공** — 배치 정밀도 미흡(11-28 재판정) · ACT는 손목 브래킷 변경으로 실행 보류 | [07](assets/media/videos/07_B-F03-S02_REPLAY_partial_20261127-2054.mp4) · [08](assets/media/videos/08_B-F03-S02_REPLAY_partial_20261127-2057.mp4) |
-| B팔 F01 S03 (11-28) | 리플레이 (정책 아님) | — | 6회 중 놓기 성공 5, 사람 손 개입 1 | [09](assets/media/videos/09_B-F01-S03_REPLAY_success_20261128-0254.mp4) |
+| [B팔 F02 S05](docs/physical-validation-F02-S05.md) | **ACT 자율** | F02 wristfix · Best 12000 | 7회 중 **깨끗한 성공 4**(00:25–00:27 연속 3회), 충돌 동반 2, 실패 1 | [02](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=02) · [03](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=03) · [04](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=04) · [05](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=05) |
+| [B팔 F01 S03](docs/physical-validation-F01-S03.md) | **ACT 자율** | F01 · Best 12000 | 15회 중 **깨끗한 성공 1**, 놓기만 성공 3, 실패 11 | [01](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=01) |
+| [B팔 F02 S01](docs/physical-validation-F02-S01.md) | 리플레이 (정책 아님) | — | 1/1 성공 | [06](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=06) |
+| B팔 F03 S02 | 리플레이 (정책 아님) | — | 2회 모두 **부분 성공** — 배치 정밀도 미흡(11-28 재판정) · ACT는 손목 브래킷 변경으로 실행 보류 | [07](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=07) · [08](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=08) |
+| B팔 F01 S03 (11-28) | 리플레이 (정책 아님) | — | 6회 중 놓기 성공 5, 사람 손 개입 1 | [09](https://purple-sy.github.io/omx-physical-ai-portfolio/video/?v=09) |
 
 **실패도 그대로 기록했다** — 운반 중 충돌, 복귀 중 끌기, 집기 반복 실패 ([부분 성공](docs/videos.md#-3-부분-성공) · [실패](docs/videos.md#-4-실패) 영상).
 
@@ -158,7 +158,7 @@ Left F02 60 ep에서 손목 action이 state와 폴더마다 51–55 단위 어�
 
 | 분야 | 문서 |
 |---|---|
-| 시각 자료 | [영상 목록](docs/videos.md) · [학습·검증 그래프](docs/graphs.md) · [증빙 이미지](docs/evidence-gallery.md) |
+| 시각 자료 | [영상 플레이어](https://purple-sy.github.io/omx-physical-ai-portfolio/video/) · [영상 목록](docs/videos.md) · [학습·검증 그래프](docs/graphs.md) · [증빙 이미지](docs/evidence-gallery.md) |
 | 데이터 수집·관리 | [data-collection-timeline.md](docs/data-collection-timeline.md) · [dataset-inventory.csv](docs/dataset-inventory.csv) |
 | 데이터 품질 | [data-quality-analysis.md](docs/data-quality-analysis.md) · [wrist-fix-analysis.md](docs/wrist-fix-analysis.md) |
 | ACT 모방학습 | [act-training-history.md](docs/act-training-history.md) |
