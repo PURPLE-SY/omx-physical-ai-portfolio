@@ -21,8 +21,8 @@ for block in re.split(r"\n(?=##+ )", md):
     if not (m and cat):
         continue
     num, title = m.groups()
-    vid = re.search(r'href="\.\./assets/media/videos/([^"]+\.mp4)"', block).group(1)
     thumb = re.search(r'src="\.\./assets/media/thumbs/([^"]+\.jpg)"', block).group(1)
+    vid = thumb[:-4] + ".mp4"   # video and thumbnail share the file stem
     facts = []
     for k, v in re.findall(r"^- \*\*(.+?):\*\* (.+)$", block, re.M):
         v = re.sub(r"`([^`]+)`", r"\1", v).replace("**", "")
