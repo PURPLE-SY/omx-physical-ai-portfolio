@@ -21,7 +21,11 @@ Robot Control · Imitation Learning · Real-world Validation
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white)
 
 
-<sub>실물 시연 영상 13개(ACT 자율 5 · 리플레이 4 · 실패 사례 4)는 팀 공개 승인 후 추가합니다 · 실행별 기록 → <a href="docs/videos.md">영상 목록</a></sub>
+<a href="assets/media/videos/01_B-F01-S03_ACT_success_20261126-2348.mp4"><img src="assets/media/thumbs/01_B-F01-S03_ACT_success_20261126-2348.jpg" width="32%" alt="ACT 자율 구동 성공 — B팔 1층 S03"></a>
+<a href="assets/media/videos/05_B-F02-S05_ACT_success_20261127-0036.mp4"><img src="assets/media/thumbs/05_B-F02-S05_ACT_success_20261127-0036.jpg" width="32%" alt="ACT 자율 구동 성공 — B팔 2층 S05"></a>
+<a href="assets/media/videos/09_B-F01-S03_REPLAY_success_20261128-0254.mp4"><img src="assets/media/thumbs/09_B-F01-S03_REPLAY_success_20261128-0254.jpg" width="32%" alt="녹화 리플레이 성공 — B팔 1층 S03"></a>
+
+<sub>▶ 썸네일을 누르면 영상이 재생됩니다 · 왼쪽부터 <b>ACT 자율 구동</b> 1층 S03 (11-26 23:48) · <b>ACT 자율 구동</b> 2층 S05 (11-27 00:36) · <b>녹화 리플레이(정책 아님)</b> 1층 S03 (11-28 02:54) · 전체 18개(ACT·리플레이·부분 성공·실패·텔레옵 시연) → <a href="docs/videos.md">영상 목록</a></sub>
 
 </div>
 
@@ -71,13 +75,13 @@ flowchart LR
 
 | 검증 | 방식 | 모델 / 체크포인트 | 결과 | 영상 |
 |---|---|---|---|---|
-| [B팔 F02 S05](docs/physical-validation-F02-S05.md) | **ACT 자율** | F02 wristfix · Best 12000 | 7회 중 **깨끗한 성공 4**(00:25–00:27 연속 3회), 충돌 동반 2, 실패 1 | 보류 (02 · 03 · 04 · 05) |
-| [B팔 F01 S03](docs/physical-validation-F01-S03.md) | **ACT 자율** | F01 · Best 12000 | 15회 중 **깨끗한 성공 1**, 놓기만 성공 3, 실패 11 | 보류 (01) |
-| [B팔 F02 S01](docs/physical-validation-F02-S01.md) | 리플레이 (정책 아님) | — | 1/1 성공 | 보류 (06) |
-| B팔 F03 S02 | 리플레이 (정책 아님) | — | 2회 모두 **부분 성공** — 배치 정밀도 미흡(11-28 재판정) · ACT는 손목 브래킷 변경으로 실행 보류 | 보류 (07 · 08) |
-| B팔 F01 S03 (11-28) | 리플레이 (정책 아님) | — | 6회 중 놓기 성공 5, 사람 손 개입 1 | 보류 (09) |
+| [B팔 F02 S05](docs/physical-validation-F02-S05.md) | **ACT 자율** | F02 wristfix · Best 12000 | 7회 중 **깨끗한 성공 4**(00:25–00:27 연속 3회), 충돌 동반 2, 실패 1 | [02](assets/media/videos/02_B-F02-S05_ACT_success_20261127-0025_ep1.mp4) · [03](assets/media/videos/03_B-F02-S05_ACT_success_20261127-0026_ep2.mp4) · [04](assets/media/videos/04_B-F02-S05_ACT_success_20261127-0027_ep3.mp4) · [05](assets/media/videos/05_B-F02-S05_ACT_success_20261127-0036.mp4) |
+| [B팔 F01 S03](docs/physical-validation-F01-S03.md) | **ACT 자율** | F01 · Best 12000 | 15회 중 **깨끗한 성공 1**, 놓기만 성공 3, 실패 11 | [01](assets/media/videos/01_B-F01-S03_ACT_success_20261126-2348.mp4) |
+| [B팔 F02 S01](docs/physical-validation-F02-S01.md) | 리플레이 (정책 아님) | — | 1/1 성공 | [06](assets/media/videos/06_B-F02-S01_REPLAY_success_20261125.mp4) |
+| B팔 F03 S02 | 리플레이 (정책 아님) | — | 2회 모두 **부분 성공** — 배치 정밀도 미흡(11-28 재판정) · ACT는 손목 브래킷 변경으로 실행 보류 | [07](assets/media/videos/07_B-F03-S02_REPLAY_partial_20261127-2054.mp4) · [08](assets/media/videos/08_B-F03-S02_REPLAY_partial_20261127-2057.mp4) |
+| B팔 F01 S03 (11-28) | 리플레이 (정책 아님) | — | 6회 중 놓기 성공 5, 사람 손 개입 1 | [09](assets/media/videos/09_B-F01-S03_REPLAY_success_20261128-0254.mp4) |
 
-**실패도 그대로 기록했다** — 운반 중 충돌, 복귀 중 끌기, 집기 반복 실패 ([실패 사례 기록](docs/videos.md#3-대표-실패충돌-사례-act)).
+**실패도 그대로 기록했다** — 운반 중 충돌, 복귀 중 끌기, 집기 반복 실패 ([부분 성공](docs/videos.md#-3-부분-성공) · [실패](docs/videos.md#-4-실패) 영상).
 
 
 **오프라인 평가는 실물보다 높게 나왔다.** 근사 시뮬은 접촉·충돌·카메라 이동을 반영하지 못한다. 표본이 작아(7–15회) 비율은 참고용이다.
@@ -105,6 +109,8 @@ flowchart LR
 
 <img src="assets/graphs/05_daily_collection.png" width="60%" alt="날짜별 수집량"> <img src="assets/graphs/06_arm_floor_distribution.png" width="38%" alt="팔·층별 분포">
 
+텔레오퍼레이션 시연 영상(사람이 리더 팔로 조작한 학습 데이터, 자율 구동 아님): A팔 1·2·3층, A·B팔 EX 분류 장소 → [영상 14–18](docs/videos.md#-5-텔레오퍼레이션-데이터-수집-학습용-시연--자율-구동-아님)
+
 ### 손목 경계 오류를 찾아 보정
 Left F02 60 ep에서 손목 action이 state와 폴더마다 51–55 단위 어긋나 ±100 경계를 넘나들었다. 녹화 코드 수정 시각보다 먼저 녹화된 데이터였다.
 
@@ -123,7 +129,7 @@ Left F02 60 ep에서 손목 action이 state와 폴더마다 51–55 단위 어�
 
 ## 카메라 정합과 하드웨어
 
-학습 화면과 실행 직전 라이브 화면을 50 %로 겹쳐 카메라 이동을 확인했다(이미지는 팀 승인 후 공개).
+학습 화면과 실행 직전 라이브 화면을 50 %로 겹쳐 카메라 이동을 확인했다(비교 이미지는 비공개).
 
 - 탑뷰 카메라 이동을 특징점 정합으로 측정·보정: 이동 19.4 px → 잔차 0.44 px, 회전 0.67° → 0.03° ([그래프 8](docs/graphs.md#8-카메라-정합-전후-오차))
 - 다음 날에는 카메라가 원래 자리로 돌아와 같은 보정이 오히려 37 px 어긋났다 → 실행마다 다시 측정하고, 보정 없이 실행했다. 보정 효과는 **미확정**.
@@ -166,5 +172,6 @@ Left F02 60 ep에서 손목 action이 state와 폴더마다 51–55 단위 어�
 
 ## 공개 범위
 - 이 저장소는 공개 저장소다. 공개 전에 팀 내부 정보, 다른 팀원의 코드, 인증정보, 개인정보, 장치 식별자를 검사했다.
-- 원본 녹화·모델·실물 검증 자료는 Hugging Face(Purple-SY)에 있다. 팀 공개 권한이 확인되기 전까지 **Hugging Face 링크(프로필 포함)와 실물 영상·사진은 싣지 않는다.** 저장소 이름·통계·SHA-256 결과만 공개한다.
+- 실물 탑뷰 영상 18개는 공개 승인을 받아 실었다. 공개 전에 모든 프레임을 검사해 사람이 나오는 구간을 잘라냈고, 소리·위치·기기 정보는 없다.
+- 사이드·손목 카메라 영상, 실험 환경 사진, Hugging Face 링크(프로필 포함)는 싣지 않는다. 원본 녹화·모델은 Hugging Face(Purple-SY)에 있으며 저장소 이름·통계·SHA-256 결과만 공개한다.
 - 미해결 문제와 미확인 수치를 숨기지 않고 각 문서에 기록했다.
