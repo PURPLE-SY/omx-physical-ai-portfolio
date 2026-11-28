@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OMX 실물 로봇 영상 — PURPLE-SY (김승용)</title>
+<meta name="description" content="OMX 로봇 팔 ACT 자율 구동, 녹화 리플레이, 부분 성공·실패, 텔레오퍼레이션 시연 영상">
+<style>
+:root{
+  --bg:#f6f8fa; --surface:#ffffff; --ink:#1f2328; --ink2:#59636e; --line:#d1d9e0; --accent:#0969da;
+  --act:#1a7f37; --replay:#0969da; --partial:#9a6700; --fail:#cf222e; --teleop:#8250df;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0d1117; --surface:#151b23; --ink:#f0f6fc; --ink2:#9198a1; --line:#3d444d; --accent:#4493f8;
+    --act:#3fb950; --replay:#4493f8; --partial:#d29922; --fail:#f85149; --teleop:#ab7df8; color-scheme: dark; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Malgun Gothic",sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 48px;overflow-wrap:anywhere}
+header{text-align:center;margin-bottom:18px}
+header h1{font-size:1.5rem;margin:0 0 4px}
+header .who{font-weight:600;margin:0}
+header .tag{color:var(--ink2);margin:2px 0 8px;font-size:.92rem}
+header a{color:var(--accent);text-decoration:none}
+header a:hover{text-decoration:underline}
+.player{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:22px}
+.player video{display:block;width:100%;aspect-ratio:4/3;max-height:72vh;background:#000;border-radius:8px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 4px}
+button{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px 14px;min-height:40px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.now{flex:1 1 260px;min-width:0}
+.now h2{font-size:1.1rem;margin:0}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:999px;border:1px solid currentColor;margin-right:6px;vertical-align:1px}
+.c-act{color:var(--act)} .c-replay{color:var(--replay)} .c-partial{color:var(--partial)} .c-fail{color:var(--fail)} .c-teleop{color:var(--teleop)}
+dl{display:grid;grid-template-columns:minmax(4.5em,max-content) minmax(0,1fr);gap:2px 12px;margin:8px 0 0;font-size:.92rem}
+@media (max-width:480px){dl{grid-template-columns:minmax(0,1fr)} dt{margin-top:6px}}
+dt{color:var(--ink2)} dd{margin:0;overflow-wrap:anywhere}
+section h3{font-size:1rem;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+section h3 .dot{width:10px;height:10px;border-radius:50%;background:currentColor}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:10px}
+@media (max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{display:block;text-align:left;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:0}
+.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.card span{display:block;padding:6px 8px;font-size:.85rem;font-weight:600;overflow-wrap:anywhere}
+.card[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+footer{color:var(--ink2);font-size:.82rem;margin-top:28px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>OMX 실물 로봇 영상</h1>
+    <p class="who">PURPLE-SY (김승용)</p>
+    <p class="tag">Robotics · Physical AI — Robot Control · Imitation Learning · Real-world Validation</p>
+    <a href="https://github.com/PURPLE-SY/omx-physical-ai-portfolio">← 포트폴리오 (GitHub)</a>
+  </header>
+
+  <div class="player">
+    <video id="v" controls playsinline preload="metadata"></video>
+    <div class="bar">
+      <button id="play" type="button">▶ 재생</button>
+      <button id="full" type="button">⛶ 전체 화면</button>
+      <div class="now"><h2 id="title"></h2></div>
+    </div>
+    <dl id="facts"></dl>
+  </div>
+
+  <div id="lists"></div>
+
+  <footer>탑뷰 640×480 · H.264 · 소리 없음. ACT 자율 구동과 녹화 리플레이(정책 아님), 텔레오퍼레이션 시연(사람이 조작)을 구분해 표시합니다.<br>
+  공개본 편집: 02·07·09는 실행 뒤 사람 손이 들어오는 마지막 구간을 잘라냈습니다.</footer>
+</div>
+<script>
+const ITEMS = [{"id": "01", "title": "1층 S03 (윗줄 오른쪽 칸)", "cat": "act", "catLabel": "ACT 자율 구동 — 성공", "video": "../assets/media/videos/01_B-F01-S03_ACT_success_20261126-2348.mp4", "thumb": "../assets/media/thumbs/01_B-F01-S03_ACT_success_20261126-2348.jpg", "facts": [["날짜·시간", "2026-11-26 23:48"], ["모델 / 체크포인트", "omx-act-arm-b-f01-13k-1124 Best 012000, CPU 사본 + 탑뷰 보정(camwarp)"], ["결과", "집기 성공 · 놓기 성공 · 충돌 없음 · 놓기 감지로 18초에 종료, 2단계 park 복귀"], ["길이", "23.7 s"]]}, {"id": "02", "title": "2층 S05 — 연속 성공 1/3", "cat": "act", "catLabel": "ACT 자율 구동 — 성공", "video": "../assets/media/videos/02_B-F02-S05_ACT_success_20261127-0025_ep1.mp4", "thumb": "../assets/media/thumbs/02_B-F02-S05_ACT_success_20261127-0025_ep1.jpg", "facts": [["날짜·시간", "2026-11-27 00:25"], ["모델 / 체크포인트", "omx-act-arm-b-f02-wristfix-13k-1124 Best 012000, CPU 사본(카메라 보정 없음)"], ["결과", "집기 성공 · 놓기 성공(오른쪽으로 약간 치우침) · 충돌 없음"], ["길이", "34.5 s (원본 36.1 s — 끝부분 사람 손 등장 구간 제외)"]]}, {"id": "03", "title": "2층 S05 — 연속 성공 2/3", "cat": "act", "catLabel": "ACT 자율 구동 — 성공", "video": "../assets/media/videos/03_B-F02-S05_ACT_success_20261127-0026_ep2.mp4", "thumb": "../assets/media/thumbs/03_B-F02-S05_ACT_success_20261127-0026_ep2.jpg", "facts": [["날짜·시간", "2026-11-27 00:26"], ["모델 / 체크포인트", "omx-act-arm-b-f02-wristfix-13k-1124 Best 012000 (02와 같음)"], ["결과", "집기 성공 · 놓기 성공(오른쪽으로 약간 치우침) · 충돌 없음"], ["길이", "36.1 s"]]}, {"id": "04", "title": "2층 S05 — 연속 성공 3/3", "cat": "act", "catLabel": "ACT 자율 구동 — 성공", "video": "../assets/media/videos/04_B-F02-S05_ACT_success_20261127-0027_ep3.mp4", "thumb": "../assets/media/thumbs/04_B-F02-S05_ACT_success_20261127-0027_ep3.jpg", "facts": [["날짜·시간", "2026-11-27 00:27"], ["모델 / 체크포인트", "omx-act-arm-b-f02-wristfix-13k-1124 Best 012000 (02와 같음)"], ["결과", "집기 성공 · 놓기 성공(오른쪽으로 약간 치우침) · 충돌 없음"], ["길이", "36.1 s"]]}, {"id": "05", "title": "2층 S05", "cat": "act", "catLabel": "ACT 자율 구동 — 성공", "video": "../assets/media/videos/05_B-F02-S05_ACT_success_20261127-0036.mp4", "thumb": "../assets/media/thumbs/05_B-F02-S05_ACT_success_20261127-0036.jpg", "facts": [["날짜·시간", "2026-11-27 00:36 (모터 전원 재시작으로 ID13 오류를 해제한 뒤)"], ["모델 / 체크포인트", "omx-act-arm-b-f02-wristfix-13k-1124 Best 012000 (02와 같음)"], ["결과", "집기 성공 · 놓기 성공 · 충돌 없음"], ["길이", "34.7 s"]]}, {"id": "06", "title": "2층 S01", "cat": "replay", "catLabel": "녹화 리플레이 — 성공 (정책 아님)", "video": "../assets/media/videos/06_B-F02-S01_REPLAY_success_20261125.mp4", "thumb": "../assets/media/thumbs/06_B-F02-S01_REPLAY_success_20261125.jpg", "facts": [["날짜·시간", "2026-11-25 00:37"], ["재생한 녹화", "손목 보정(wristfix) 데이터 S01 ep7 (635 frames), 0.25배속"], ["결과", "성공. 실행 중 안전 감시 정지 0회"], ["길이", "104.4 s"]]}, {"id": "09", "title": "1층 S03 — 리플레이 대표", "cat": "replay", "catLabel": "녹화 리플레이 — 성공 (정책 아님)", "video": "../assets/media/videos/09_B-F01-S03_REPLAY_success_20261128-0254.mp4", "thumb": "../assets/media/thumbs/09_B-F01-S03_REPLAY_success_20261128-0254.jpg", "facts": [["날짜·시간", "2026-11-28 02:54"], ["재생한 녹화", "11-24 녹화 ep1, 0.25배속"], ["결과", "성공(윗줄 3칸 완성). 같은 날 F01 S03 리플레이 6회 중 놓기 성공 5, 사람 손 개입 1 (영상 손상 1회는 판정 제외)"], ["길이", "79.0 s (원본 98.8 s — 실행 뒤 사람 손 등장 구간 제외)"]]}, {"id": "07", "title": "리플레이 · 3층 S02 — 배치 정밀도 미흡", "cat": "partial", "catLabel": "부분 성공", "video": "../assets/media/videos/07_B-F03-S02_REPLAY_partial_20261127-2054.mp4", "thumb": "../assets/media/thumbs/07_B-F03-S02_REPLAY_partial_20261127-2054.jpg", "facts": [["날짜·시간", "2026-11-27 20:54"], ["재생한 녹화", "11-14 녹화 ep28, 0.25배속"], ["결과", "집기·운반·놓기는 끝까지 했으나 놓은 위치의 정밀도가 부족 → 부분 성공 (실행 기록상 \"성공\", 2026-11-28 재판정)"], ["길이", "67.0 s (원본 100.0 s — 실행 뒤 사람 손 등장 구간 제외)"]]}, {"id": "08", "title": "리플레이 · 3층 S02 — 배치 정밀도 미흡", "cat": "partial", "catLabel": "부분 성공", "video": "../assets/media/videos/08_B-F03-S02_REPLAY_partial_20261127-2057.mp4", "thumb": "../assets/media/thumbs/08_B-F03-S02_REPLAY_partial_20261127-2057.jpg", "facts": [["날짜·시간", "2026-11-27 20:57"], ["재생한 녹화", "같은 3층 S02 녹화 계열, 0.25배속"], ["결과", "07과 같은 이유로 부분 성공 (실행 기록상 \"성공\", 2026-11-28 재판정)"], ["길이", "153.8 s"]]}, {"id": "10", "title": "ACT 자율 · 2층 S05 — 운반 중 충돌", "cat": "partial", "catLabel": "부분 성공", "video": "../assets/media/videos/10_B-F02-S05_ACT_collision_20261127-0022.mp4", "thumb": "../assets/media/thumbs/10_B-F02-S05_ACT_collision_20261127-0022.jpg", "facts": [["날짜·시간", "2026-11-27 00:22"], ["모델 / 체크포인트", "F02 wristfix Best 012000"], ["결과", "놓기는 성공(비스듬). 운반 중 S03 2층 컨테이너를 트레이 밖으로 밀어냄"], ["길이", "35.1 s"]]}, {"id": "12", "title": "ACT 자율 · 1층 S03 — 복귀 중 끌기", "cat": "partial", "catLabel": "부분 성공", "video": "../assets/media/videos/12_B-F01-S03_ACT_partial_drag_20261126-2356.mp4", "thumb": "../assets/media/thumbs/12_B-F01-S03_ACT_partial_drag_20261126-2356.jpg", "facts": [["날짜·시간", "2026-11-26 23:56"], ["모델 / 체크포인트", "F01 Best 012000 camwarp"], ["결과", "놓기 성공 후 복귀하면서 트레이 컨테이너 2개를 끌어냄. 원인 후보: shoulder_lift 추종 지연(학습 대비 2–2.5배)으로 팔이 계획보다 낮게 지나감(미확정)"], ["길이", "19.9 s"]]}, {"id": "11", "title": "ACT 자율 · 2층 S05 — 충돌로 정지", "cat": "fail", "catLabel": "실패", "video": "../assets/media/videos/11_B-F02-S05_ACT_fail_collision_20261127-0037.mp4", "thumb": "../assets/media/thumbs/11_B-F02-S05_ACT_fail_collision_20261127-0037.jpg", "facts": [["날짜·시간", "2026-11-27 00:37"], ["모델 / 체크포인트", "F02 wristfix Best 012000"], ["결과", "운반 중 컨베이어 쪽 2층 컨테이너를 쳐서 넘어뜨림 → 사용자 정지(17초)"], ["길이", "22.9 s"]]}, {"id": "13", "title": "ACT 자율 · 1층 S03 — 집기 반복 실패", "cat": "fail", "catLabel": "실패", "video": "../assets/media/videos/13_B-F01-S03_ACT_fail_grasp_20261127-0001.mp4", "thumb": "../assets/media/thumbs/13_B-F01-S03_ACT_fail_grasp_20261127-0001.jpg", "facts": [["날짜·시간", "2026-11-27 00:01"], ["모델 / 체크포인트", "F01 Best 012000 camwarp, step limit 5 시험"], ["결과", "집기를 반복하다 물체를 밀어냄, 30초 시간 종료 → step limit 3으로 되돌림"], ["길이", "36.1 s"]]}, {"id": "14", "title": "A팔 · 1층 S03", "cat": "teleop", "catLabel": "텔레오퍼레이션 시연 (자율 구동 아님)", "video": "../assets/media/videos/14_A-F01-S03_TELEOP_20261121_ep1.mp4", "thumb": "../assets/media/thumbs/14_A-F01-S03_TELEOP_20261121_ep1.jpg", "facts": [["녹화", "2026-11-21, pick_place_R_11_21_F01_S03 ep1 (QC 승인, A팔 F01 13k 모델 학습 데이터)"], ["작업", "컨베이어 컨테이너를 집어 트레이 1층 S03에 놓기"], ["길이", "16.7 s"]]}, {"id": "15", "title": "A팔 · 2층 S04", "cat": "teleop", "catLabel": "텔레오퍼레이션 시연 (자율 구동 아님)", "video": "../assets/media/videos/15_A-F02-S04_TELEOP_20261121_ep7.mp4", "thumb": "../assets/media/thumbs/15_A-F02-S04_TELEOP_20261121_ep7.jpg", "facts": [["녹화", "2026-11-21, pick_place_R_11_21_F02_S04 ep7 (QC 승인, A팔 F02 13k 모델 학습 데이터)"], ["작업", "컨베이어 컨테이너를 집어 2층 S04에 놓기"], ["길이", "14.2 s"]]}, {"id": "16", "title": "A팔 · 3층 S04", "cat": "teleop", "catLabel": "텔레오퍼레이션 시연 (자율 구동 아님)", "video": "../assets/media/videos/16_A-F03-S04_TELEOP_20261124_ep9.mp4", "thumb": "../assets/media/thumbs/16_A-F03-S04_TELEOP_20261124_ep9.jpg", "facts": [["녹화", "2026-11-24, pick_place_R_11_24_F03_S04 ep9 (QC 승인, A팔 F03 13k 모델 학습 데이터)"], ["작업", "컨베이어 컨테이너를 집어 3층 S04에 놓기"], ["길이", "20.7 s"]]}, {"id": "17", "title": "B팔 · EX 분류 장소", "cat": "teleop", "catLabel": "텔레오퍼레이션 시연 (자율 구동 아님)", "video": "../assets/media/videos/17_B-EX-F01_TELEOP_20261121_ep1.mp4", "thumb": "../assets/media/thumbs/17_B-EX-F01_TELEOP_20261121_ep1.jpg", "facts": [["녹화", "2026-11-21, pick_place_L_11_21_F01_EX ep1 (QC 승인, B팔 EX 13k 모델 학습 데이터)"], ["작업", "트레이 1층의 컨테이너 3개를 하나씩 집어 팔 앞쪽 EX 분류 장소로 옮기기"], ["길이", "54.5 s"]]}, {"id": "18", "title": "A팔 · EX 분류 장소", "cat": "teleop", "catLabel": "텔레오퍼레이션 시연 (자율 구동 아님)", "video": "../assets/media/videos/18_A-EX-F02_TELEOP_20261121_ep4.mp4", "thumb": "../assets/media/thumbs/18_A-EX-F02_TELEOP_20261121_ep4.jpg", "facts": [["녹화", "2026-11-21, pick_place_R_11_21_F02_EX ep4 (QC 승인, A팔 EX 13k 모델 학습 데이터)"], ["작업", "트레이 2층의 컨테이너 3개를 하나씩 집어 팔 앞쪽 EX 분류 장소로 옮기기"], ["길이", "57.5 s"]]}];
+const ORDER = ["act","replay","partial","fail","teleop"];
+const v = document.getElementById("v"), playBtn = document.getElementById("play"), fullBtn = document.getElementById("full");
+const titleEl = document.getElementById("title"), factsEl = document.getElementById("facts"), lists = document.getElementById("lists");
+
+function el(tag, attrs, text){ const e=document.createElement(tag); for(const k in (attrs||{})) e.setAttribute(k, attrs[k]); if(text!=null) e.textContent=text; return e; }
+
+function select(id, autoplay){
+  const it = ITEMS.find(x => x.id === id) || ITEMS[0];
+  v.src = it.video; v.poster = it.thumb;
+  titleEl.textContent = "";
+  titleEl.append(el("span", {class:"badge c-"+it.cat}, it.catLabel), document.createTextNode(it.id + " · " + it.title));
+  factsEl.textContent = "";
+  for (const [k, val] of it.facts){ factsEl.append(el("dt", null, k), el("dd", null, val)); }
+  document.querySelectorAll(".card").forEach(c => c.setAttribute("aria-current", c.dataset.id === it.id ? "true" : "false"));
+  document.title = it.id + " · " + it.title + " — OMX 실물 로봇 영상";
+  const u = new URL(location.href); u.searchParams.set("v", it.id); history.replaceState(null, "", u);
+  if (autoplay) v.play().catch(() => {});
+}
+
+for (const cat of ORDER){
+  const group = ITEMS.filter(x => x.cat === cat); if (!group.length) continue;
+  const sec = el("section"); const h = el("h3", {class:"c-"+cat}); h.append(el("span",{class:"dot"}), document.createTextNode(group[0].catLabel));
+  const grid = el("div", {class:"grid"});
+  for (const it of group){
+    const b = el("button", {class:"card", type:"button", "data-id": it.id, "aria-label": it.id + " " + it.title + " 재생"});
+    const img = el("img", {src: it.thumb, alt: "", loading: "lazy", width: "320", height: "240"});
+    b.append(img, el("span", null, it.id + " · " + it.title));
+    b.addEventListener("click", () => { select(it.id, true); window.scrollTo({top: 0, behavior: "smooth"}); });
+    grid.append(b);
+  }
+  sec.append(h, grid); lists.append(sec);
+}
+
+playBtn.addEventListener("click", () => { v.paused ? v.play() : v.pause(); });
+v.addEventListener("play", () => playBtn.textContent = "⏸ 일시정지");
+v.addEventListener("pause", () => playBtn.textContent = "▶ 재생");
+v.addEventListener("ended", () => playBtn.textContent = "▶ 재생");
+fullBtn.addEventListener("click", () => {
+  if (document.fullscreenElement) return document.exitFullscreen();
+  if (v.requestFullscreen) v.requestFullscreen();
+  else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();   // iOS Safari
+  else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
+});
+document.addEventListener("keydown", e => {
+  if (e.target.closest("button") || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key === " " || e.key === "k") { e.preventDefault(); v.paused ? v.play() : v.pause(); }
+  if (e.key === "f") fullBtn.click();
+});
+
+select(new URLSearchParams(location.search).get("v"), false);
+</script>
+</body>
+</html>
